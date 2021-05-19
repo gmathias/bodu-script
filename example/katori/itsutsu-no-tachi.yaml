@@ -1,0 +1,61 @@
+art: 'org.budoscript.kobudo:katori:latest'
+name: itsutsu no tachi
+translation: 5 technics of the sword
+steps:
+  - *: salute
+  - *: nuki # kamae-to? -> seigan
+  -
+    UD: center, ayumi-ashi
+    KK: ayumi-ashi/backwards
+  -
+    UD: ayumi-ashi
+    KK: ayumi-ashi/backwards, center
+  -
+    UD: in-no-kamae
+  - KK: maki-uchi/on-the-spot + ei
+  - KK: maki-uchi/on-the-spot + ya
+  -
+    KK: ayumi-ashi
+    UD: ayumi-ashi/backwards
+  -
+    KK: tsuki
+    UD: ayumi-ashi/backwards
+  -
+    KK: maki-uchi
+    UD: in-no-uke
+  -
+    UD: seigan
+    KK: migi-gedan
+  -
+    UD: maki-uchi
+    KK: ko-gasumi
+  -
+    UD: migi-do-uchi
+    KK: shimesu
+  -
+    KK: o-gasumi
+    UD: in-no-kamae
+  -
+    UD: hidari-center
+    KK: hidari-gedan
+  -
+    UD: maki-uchi
+    KK: hidari-escape # kawasu? kuguru?
+  -
+    KK: maki-uchi
+    UD: te-ura-gasumi
+  - KK: suwari-migi-gedan
+  -
+    UD: men
+    KK: torii
+  -
+    KK: migi-do-uchi
+    UD: do-uke/short
+  -
+    KK: kubi-kiri
+    UD: kubi-kiri/backwards
+  - *: in-no-kamae
+  -
+    UD: kubi-kiri
+    KK: kote-age
+  - KK: kesa-giri + to

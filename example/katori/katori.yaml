@@ -1,0 +1,88 @@
+roles:
+  - student:
+    aka:
+      - KK: Kiri Komi
+      - UK: Uchi Komi
+  - teacher
+    aka:
+        - UD: Uke Dachi
+
+units:
+  - shaku: 30.30 cm
+  - jo: 10 shaku
+  - sun: shaku / 10
+  - hiro: 6 shaku # human wingspan ~1.818m
+
+weapons:
+  - "org.budoscript.kobudo:katana:1.0"
+
+kiai:
+  - ei
+  - ya
+  - to
+
+kamae:
+  - salute:
+      feet:
+  - migi:
+      feet:
+        # F=Forward, B=Backward, R=Right, L=Left
+        # relative to gravity center (hips)
+        # or 0.4,0.1 (F/R == positive) ?
+        # direction/angle: -180/+180? or NW==-45?
+        # unit? step? shoulders width?
+        right: F0.4,R0.1,A0
+        left: B0.6,R0.1,A-60
+  - seigan: extends migi
+
+distance:
+  - chika-ma # 1 tatami
+  - ma # 2 tatami
+  - to-ma # 4 tatami
+
+directions:
+  forward: mae
+  backward: ura
+  left: hidari
+  right: migi
+  up: #?
+  down: #?
+
+timing:
+  sen: # opponent preparing attack
+  tai: # opponent's moving (tai sabaki)
+  go: # after?
+  machi: # opponent has almost finished his strike
+
+moves:
+  - ayumi-ashi:
+      - if rightFoot > leftFoot:
+          hips: +0.5s
+          leftFoot: +1s
+      - if leftFoot > rightFoot:
+          hips: +0.5s
+          rightFoot: +1s
+  - tuski-ashi:
+      ...
+  - maki-uchi:
+      - prepare:
+          leftFoot: +1s
+      - strike:
+          rightFoot: +1s
+          kissaki: opponent.head
+
+kata-groups:
+  - iai:
+      KK: katana
+  - kenjutsu:
+      KK: katana
+      UD: katana
+  - bojutsu:
+      UK: bo
+      UD: katana
+  - nagijutsu:
+      KK: naginata
+      UD: katana
+  - ryoto:
+      KK: katana/right + wakizashi/left
+

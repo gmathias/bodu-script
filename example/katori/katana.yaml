@@ -1,0 +1,11 @@
+package: org.budoscript.kobudo
+name: katana
+version: 1.0
+type: weapon
+parts:
+  - tsuka: hand/right
+  - tsuka-kashira: hand/left
+  - tsuba
+  - nagasa
+  - kissaki
+  - mono-uchi
