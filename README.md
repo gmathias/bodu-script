@@ -3,174 +3,41 @@
 A specification (and hopefully implementation soon) of a language to describe kata
 and to represent them visually.
 
+The scripting is split into different files for different purposes:
+- kata scripts: human readable / natural language for a practitioner of the art (but abstract for computers)
+- art dictionary: technical details: describes how to reproduce each move/strike (but still relative, no absolute distance for ex)
+- visualization: provides settings to represent it as an animation (avatars, weapons look, etc)
+  - needs the art dictionary to render a kata script
+
 Disclaimer: this is absolutely not a way to replace martial art teachers, but merely a tool to help with memorizing sequences and avoid transmission mistakes.
 
 Description and representation will always be approximative and can't describe all the details and feelings that comes in real life.
 
-## Requirements
-
-- all kind of budos
-- human body puppet (could be generized to any puppet)
-- customizable (opponents of different size, shape, gender)
-- footwork
-- kamae (stances)
-- strikes / punchs / kicks
-- throwing weapons (arrow, shuriken, etc)  
-- simaltenous moves of different characters
-- extensible: reuse already defined component/moves/arts to overwrite then
-- licenses? npm licenses?
-
-### Concepts
-
-- characters / roles (typically 2 but has to stay open)
-- weapons
-- clothes, armor
-- kamae: postures
-- strikes: attack a target with(out) weapon (or barehand)
-
-### Behavior vs representation
-
-Like HTML vs CSS, one file will describe the behaviour (data like HTML) and another one will provide the representation (CSS).
-Maybe there could be a possibility to include some CSS into the HTML (inline style).
-
-### Human puppet
-
-Hierarchy represents the articulation (joints) of the puppet.
-Ex: forearm is moving around the elbow, based on the arm position.
-
-- root/body
-  - neck (throat/nape)
-    - head
-      - forehead
-      - month
-      - eyes
-      - ears
-  - torso / back
-  - shoulder/armpit: arms
-    - elbow (in/out): forearm
-      - wrist: hand
-        - fingers
-        - thumb
-  - hips
-    - thighs
-      - knee/kneepit(aka hough) : legs
-        - ankle/heel: feet
-    - groin/crotch
-
-All parts and joints can be targeted by strikes.
-
-## Specification
-
-
 ### Example Kenjutsu
 
-org.budoscript.kobudo:katori:
+Example kata of kenjutsu:
 ```yaml
-roles:
-- student:
-  aka: 
-    - KK: Kiri Komi
-    - UK: Uchi Komi
-- teacher
-  aka: 
-    - UD: Uke Dachi
-
-units:
-  - shaku: 30.30 cm
-  - jo: 10 shaku
-  - sun: shaku / 10
-  - hiro: 6 shaku # human wingspan ~1.818m
-  
-weapons:
-- katana
-  - tsuka (right hand)
-    - tsuka-kashira (left hand)
-  - tsuba
-  - nagasa
-    - kissaki
-    - mono-uchi
-
-kiai:
-  - ei
-  - ya
-  - to
-
-kamae:
-  - salute:
-      feet:
-  - migi:
-      feet:
-        # F=Forward, B=Backward, R=Right, L=Left
-        # relative to gravity center (hips)
-        # or 0.4,0.1 (F/R == positive) ?
-        # direction/angle: -180/+180? or NW==-45?
-        # unit? step? shoulders width?
-        right: F0.4,R0.1,A0
-        left: B0.6,R0.1,A-60
-  - seigan: extends migi
-
-distance:
-  - chika-ma # 1 tatami
-  - ma # 2 tatami
-  - to-ma # 4 tatami
-    
-timing:
-  sen: # as soon as opponent shows intention
-  go: # opponent preparing attack
-  tai: # opponent's moving (tai sabaki)
-  machi: # opponent has almost finished his strike
-
-moves:
-  - ayumi-ashi:
-      - if rightFoot > leftFoot:
-          hips: +0.5s
-          leftFoot: +1s
-      - if leftFoot > rightFoot:
-          hips: +0.5s
-          rightFoot: +1s
-  - tuski-ashi:
-      ...
-  - maki-uchi:
-      - prepare:
-          leftFoot: +1s
-      - strike:
-          rightFoot: +1s
-          kissaki: opponent.head
-
-kata-groups:
-  - iai:
-      KK: katana
-  - kenjutsu:
-      KK: katana
-      UD: katana
-  - bojutsu:
-      UK: bo
-      UD: katana
-  - nagijutsu:
-      KK: naginata
-      UD: katana
-          
+art: 'org.budoscript.kobudo:kenjutsu:latest'
+name: example kata
+init:
+  roles:
+    P1: katana
+    P2: katana
+  distance: 2 tatamis
+  stance:
+    *: seigan
+steps:
+  -
+    P1: gedan
+  - 
+    P2: men-uchi
+    P1: te-ura-gasumi
+  -
+    P1: men-uchi
+    P2: gedan
 ```
 
-Kata 
-```yaml
-```
+In short P2 strikes men, P1 counter-attacks.
 
+That example implies that kamae/strikes (seigan, gedan, men-uchi) are defined by `org.budoscript.kobudo:kenjutsu`.
 
-## Implementation proposal
-
-### Language: Javascript?
-
-### Repo: npm?
-
-### Representation
-
-Defines anything required to render/visualize a kata:
-- puppets: size, weight, gender, etc
-- colors
-
-#### implementation?
-
-- SVG SMIL animation
-- CSS animation
-- Engine JS: 2d, 3d?

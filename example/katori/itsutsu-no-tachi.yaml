@@ -1,11 +1,15 @@
 art: 'org.budoscript.kobudo:katori:latest'
 name: itsutsu no tachi
 translation: 5 technics of the sword
+init:
+  distance: 4 tatamis
+  stance:
+    *: salute
 steps:
   - *: salute
   - *: nuki # kamae-to? -> seigan
   -
-    UD: center, ayumi-ashi
+    UD: center + ayumi-ashi
     KK: ayumi-ashi/backwards
   -
     UD: ayumi-ashi
@@ -47,7 +51,7 @@ steps:
   - KK: suwari-migi-gedan
   -
     UD: men
-    KK: torii
+    KK: suwari-torii
   -
     KK: migi-do-uchi
     UD: do-uke/short
